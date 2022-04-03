@@ -1,15 +1,14 @@
 import pandas as pd
 import numpy as np
 
-class database():
+class database:
 
         def __init__(self, url):
                 self.url = url
-                self.data_fichier=pd.read_json(url)
 
         def create_data(self):
-
-            df=self.data_fichier[:]
+            data_fichier=pd.read_json(self.url)
+            df=data_fichier[:]
 
             county = pd.DataFrame(df.pivot_table(index = ['county'], aggfunc ='size') , columns=["nb"])
             town = pd.DataFrame(df.pivot_table(index = ['town'], aggfunc ='size') , columns=["nb"])
@@ -71,17 +70,5 @@ class database():
 
             return df
 
-        def add_data(self, new_line):
-            df=self.data_fichier[:]
 
-            postcode=new_line["postcode"]
-            epci=new_line["epci"]
-            county=new_line["county"]
-
-    
-            county = pd.DataFrame(df.pivot_table(index = ['county'], aggfunc ='size') , columns=["nb"])
-            town = pd.DataFrame(df.pivot_table(index = ['town'], aggfunc ='size') , columns=["nb"])
-            epci = pd.DataFrame(df.pivot_table(index = ['epci'], aggfunc ='size'), columns=["nb"])  
-            df=pd.concat([df,new_line], ignore_index=True)
-            return df
 
