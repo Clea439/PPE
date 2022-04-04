@@ -10,7 +10,7 @@ class regression:
                 
         def long_reg(self):
             data_base=self.data_base.dropna()
-            x = data_base[["weight","postcode","epci","town","county"]]
+            x = data_base[["postcode","total_weight","epci_weight","postcode_weight","town_weight","county_weight","num_county","num_epci","num_town"]]
             y = data_base["longitude"]
 
             x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = 0.15, random_state = None)
@@ -23,11 +23,11 @@ class regression:
             r2 = r2_score(y_test, y_pred_mlr)
             rmse = mean_squared_error(y_test, y_pred_mlr, squared=False)
 
-            return mlr,r2,rmse,y_pred_mlr,y_train
+            return mlr,r2,rmse,y_pred_mlr,y_train,x_test
 
         def lat_reg(self):
             data_base=self.data_base.dropna()
-            x = data_base[["weight","postcode","epci","town","county"]]
+            x = data_base[["postcode","total_weight","epci_weight","postcode_weight","town_weight","county_weight","num_county","num_epci","num_town"]]
             y = data_base["latitude"]
 
             x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = 0.15, random_state = None)

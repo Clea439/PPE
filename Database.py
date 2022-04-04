@@ -22,7 +22,7 @@ class database:
             county["weight"]=county["nb"]/len(county)
             town["weight"]=town["nb"]/len(town)
             epci["weight"]=epci["nb"]/len(epci)
-            postcode["weight"]=town["nb"]/len(postcode)
+            postcode["weight"]=postcode["nb"]/len(postcode)
 
             county["county"]=county.index
             town["town"]=town.index
@@ -34,41 +34,79 @@ class database:
             df["postcode_weight"]=np.zeros(len(df))
             df["town_weight"]=np.zeros(len(df))
             df["county_weight"]=np.zeros(len(df))
+            
+            df["num_county"]=np.zeros(len(df))
+            df["num_epci"]=np.zeros(len(df))
+            df["num_town"]=np.zeros(len(df))
 
             for index, row in df.iterrows():
                 for index2, row2 in county.iterrows():
                     if row["county"]==row2["county"]:
-                        df["total_weight"][index]=row["weight"]+row2["weight"]
-                        df["county_weight"][index]=row["weight"]+row2["weight"]
-                        df["county"][index]=row2["num_county"]
+                        df["total_weight"][index]=row["total_weight"]+row2["weight"]
+                        df["county_weight"][index]=row2["weight"]
+                        df["num_county"][index]=row2["num_county"]
             
             for index, row in df.iterrows():
                 for index2, row2 in postcode.iterrows():
                     if row["postcode"]==row2["postcode"]:
-                        df["total_weight"][index]=row["weight"]+row2["weight"]
-                        df["postcode_weight"][index]=row["weight"]+row2["weight"]
+                        df["total_weight"][index]=row["total_weight"]+row2["weight"]
+                        df["postcode_weight"][index]=row2["weight"]
 
             for index, row in df.iterrows():
                 for index2, row2 in town.iterrows():
                     if row["town"]==row2["town"]:
-                        df["total_weight"][index]=row["weight"]+row2["weight"]
-                        df["town_weight"][index]=row["weight"]+row2["weight"]
-                        df["town"][index]=row2["num_town"]
+                        df["total_weight"][index]=row["total_weight"]+row2["weight"]
+                        df["town_weight"][index]=row2["weight"]
+                        df["num_town"][index]=row2["num_town"]
 
             for index, row in df.iterrows():
                 for index2, row2 in epci.iterrows():
                     if row["epci"]==row2["epci"]:
-                        df["total_weight"][index]=row["weight"]+row2["weight"]
-                        df["epci_weight"][index]=row["weight"]+row2["weight"]
-                        df["epci"][index]=row2["num_epci"]
+                        df["total_weight"][index]=row["total_weight"]+row2["weight"]
+                        df["epci_weight"][index]=row2["weight"]
+                        df["num_epci"][index]=row2["num_epci"]
 
             del df['images']
 
             df.to_csv (r'C:\Users\lilia\OneDrive\Documents\Lilian\ING4_S2\Untitled Folder\regression.csv', index = False, header=True)
-            
-            self.data_fichier=df
+        
 
             return df
+        
+        def find_thx_county(self,county,data):
+            finder=pd.DataFrame(columns=data.columns)
+            for index, row in data.iterrows():
+                if row["county"]==county:
+                    arr=row.values
+                    arr=arr.reshape((1, 14))
+                    arr=pd.DataFrame(arr,columns=data.columns)
+                    finder=finder.append(arr, ignore_index=True)
+            del finder["county"]
+            del finder["town"]
+            del finder["epci"]
+            del finder["latitude"]
+            del finder["longitude"]
+            
+            return finder
+        
+        def find_thx_epci(self,epci,data):
+            finder=pd.DataFrame(columns=data.columns)
+            for index, row in data.iterrows():
+                if row["epci"]==epci:
+                    arr=row.values
+                    arr=arr.reshape((1, 14))
+                    arr=pd.DataFrame(arr,columns=data.columns)
+                    finder=finder.append(arr, ignore_index=True)
+            del finder["county"]
+            del finder["town"]
+            del finder["epci"]
+            del finder["latitude"]
+            del finder["longitude"]
+            return finder
+        
+        
+        
+        
 
 
 
