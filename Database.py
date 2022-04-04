@@ -68,7 +68,7 @@ class database:
 
             del df['images']
 
-            df.to_csv (r'C:\Users\lilia\OneDrive\Documents\Lilian\ING4_S2\Untitled Folder\regression.csv', index = False, header=True)
+            df.to_csv (r'C:\Users\lilia\OneDrive\Documents\Lilian\ING4_S2\PPE\PPE\regression.csv', index = False, header=True)
         
 
             return df

@@ -1,7 +1,8 @@
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error, r2_score
-
+import pandas as pd
+import time
 
 class regression:
 
@@ -42,4 +43,25 @@ class regression:
 
             return mlr,r2,rmse,y_pred_mlr,y_train
 
+        def opti_regression(self):
+
+            start_time = time.time()
+            
+            mlr=pd.DataFrame(columns=["mlr_lat","mlr_long",'r2_lat','r2_long'])
+            
+            for i in range(500):
+                mlrlat,r2lat,rmselat,y_pred_mlrlat,y_trainlat=self.lat_reg()
+                mlrlong,r2long,rmselong,y_pred_mlrlong,y_trainlong,x_test=self.long_reg()
+                mlr=mlr.append({"mlr_lat" :mlrlat ,"mlr_long" : mlrlong, 'r2_lat' :float(r2lat), 'r2_long' :float(r2long) } , ignore_index=True)
+            
+            best_mlr_lat = mlr['mlr_lat'][mlr["r2_lat"].idxmax()]
+            best_mlr_long = mlr['mlr_long'][mlr["r2_long"].idxmax()]
+            best_r2lat = mlr['r2_lat'][mlr["r2_lat"].idxmax()]
+            best_r2long = mlr['r2_long'][mlr["r2_long"].idxmax()]
+            
+            interval = time.time() - start_time
+            
+            print(interval)
+            
+            return best_mlr_lat,best_mlr_long,best_r2lat,best_r2long,y_trainlat,y_trainlong,y_pred_mlrlong,y_pred_mlrlat
 
