@@ -14,9 +14,9 @@ r=regression(df)
 mlrlat,mlrlong,rmselat,rmselong,y_trainlat,y_trainlong,y_pred_mlrlong,y_pred_mlrlat,y_testlat,y_testlong=r.opti_regression()
 mlr_weight,r2,rmse=r.weight_regression()
 
-print(rmselat)
-print(rmselong)
-print(r2)
+print("Mean square error for the latitude : "+str(rmselat))
+print("Mean square error for the longitude : "+str(rmselong))
+print("Mean square error for the weight : "+str(rmse))
 
 
 

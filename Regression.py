@@ -39,7 +39,7 @@ class regression:
             y_pred_mlr=mlr.predict(x_test)
 
             r2 = r2_score(y_test, y_pred_mlr)
-            rmse = mean_squared_error(y_test, y_pred_mlr, squared=False)
+            rmse = mean_squared_error(y_test, y_pred_mlr, squared=True)
 
             return mlr,r2,rmse,y_pred_mlr,y_train,y_test
         
