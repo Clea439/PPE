@@ -14,7 +14,7 @@ class mapping:
                 self.data_longitude = data_longitude
                 self.data_latitude = data_latitude
                 
-    def create_map_total_prediction(self, train):
+    def create_map_total_prediction(self, train, test):
         
         y_pred_mlrlat=list(self.data_latitude)
         y_pred_mlrlong=list(self.data_longitude)
@@ -28,25 +28,36 @@ class mapping:
         for i in range(0,len(prediction)):
            folium.Circle(
               location=[prediction.iloc[i]['latitude'], prediction.iloc[i]['longitude']],
-              radius=500,
+              radius=550,
               color="red",
               weight=2,
               fill_color='orange',
-              fill_opacity = 0.5,
+              fill_opacity = 0.25,
            ).add_to(c)
         
         for i in range(0,len(train)):
            folium.Circle(
               location=[train.iloc[i]['latitude'], train.iloc[i]['longitude']],
               radius=10,
-              color="#3186cc",
+              color="#00BFFF",
+              fill=False,
+              
+           ).add_to(c)
+        
+        for i in range(0,len(test)):
+           folium.Circle(
+              location=[test.iloc[i]['latitude'], test.iloc[i]['longitude']],
+              radius=100,
+              color="black",
+              fill_color='black',
+              fill_opacity = 1,
               fill=False,
               
            ).add_to(c)
         
         return c
     
-    def create_map_prediction(self):
+    def create_map_prediction(self,weight):
         
         pred_lat=list(self.data_latitude)
         pred_long=list(self.data_longitude)
@@ -60,7 +71,7 @@ class mapping:
         for i in range(0,len(prediction)):
            folium.Circle(
               location=[prediction.iloc[i]['latitude'], prediction.iloc[i]['longitude']],
-              radius=500,
+              radius=float(weight.iloc[i]["weight"])*15,
               color="red",
               weight=2,
               popup=folium.Popup("""<h3>This is the index of the prediction</h3>
