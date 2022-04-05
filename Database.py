@@ -108,12 +108,14 @@ class database:
             epci = pd.DataFrame(df.pivot_table(index = ['epci'], aggfunc ='size'))
             epci_data=pd.DataFrame(columns=["epci"])
             epci_data["epci"]=epci.index
+            epci_data.to_csv(r'C:\Users\lilia\OneDrive\Documents\Lilian\ING4_S2\PPE\PPE\all_epci.csv', index = False, header=True)
             return epci_data
         
         def all_county(self, df):
             county = pd.DataFrame(df.pivot_table(index = ['county'], aggfunc ='size'))
             county_data=pd.DataFrame(columns=["county"])
             county_data["county"]=county.index
+            county_data.to_csv(r'C:\Users\lilia\OneDrive\Documents\Lilian\ING4_S2\PPE\PPE\all_county.csv', index = False, header=True)
             return county_data
         
         

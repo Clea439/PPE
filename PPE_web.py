@@ -6,6 +6,9 @@ import pandas as pd
 df=pd.read_csv(r'C:\Users\lilia\OneDrive\Documents\Lilian\ING4_S2\PPE\PPE\regression.csv')
 d=database('C:/Users/lilia/OneDrive/Documents/Lilian/ING4_S2/PPE/PPE/Clean2gether.json')
 
+epci_data=d.all_epci(df)
+county_data=d.all_county(df)
+
 r=regression(df)
 
 mlrlat,mlrlong,rmselat,rmselong,y_trainlat,y_trainlong,y_pred_mlrlong,y_pred_mlrlat,y_testlat,y_testlong=r.opti_regression()
