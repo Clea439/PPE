@@ -66,7 +66,7 @@ class regression:
             
             mlr=pd.DataFrame(columns=["mlr_lat","mlr_long",'r2_lat','r2_long'])
             
-            for i in range(5):
+            for i in range(1):
                 mlrlat,r2lat,rmselat,y_pred_mlrlat,y_trainlat,y_testlat=self.lat_reg()
                 mlrlong,r2long,rmselong,y_pred_mlrlong,y_trainlong,y_testlong=self.long_reg()
                 mlr=mlr.append({"mlr_lat" :mlrlat ,"mlr_long" : mlrlong, 'r2_lat' :float(r2lat), 'r2_long' :float(r2long), 'rmselat' :float(rmselat), 'rmselong' :float(rmselong) } , ignore_index=True)
