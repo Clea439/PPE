@@ -104,8 +104,17 @@ class database:
             del finder["longitude"]
             return finder
         
-
+        def all_epci(self, df):
+            epci = pd.DataFrame(df.pivot_table(index = ['epci'], aggfunc ='size'))
+            epci_data=pd.DataFrame(columns=["epci"])
+            epci_data["epci"]=epci.index
+            return epci_data
         
+        def all_county(self, df):
+            county = pd.DataFrame(df.pivot_table(index = ['county'], aggfunc ='size'))
+            county_data=pd.DataFrame(columns=["county"])
+            county_data["county"]=county.index
+            return county_data
         
         
 

@@ -75,7 +75,7 @@ class mapping:
               color="red",
               weight=2,
               popup=folium.Popup("""<h3>This is the index of the prediction</h3>
-                                 """+str(prediction.index[i]), width=500),
+                                 """+str(weight.iloc[i]["weight"]), width=500),
               fill_color='orange',
               fill_opacity = 0.5,
            ).add_to(c)
