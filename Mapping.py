@@ -6,6 +6,7 @@ Created on Mon Apr  4 14:39:58 2022
 """
 import pandas as pd
 import folium
+import numpy as np
 
 
 class mapping:
@@ -71,10 +72,10 @@ class mapping:
         for i in range(0,len(prediction)):
            folium.Circle(
               location=[prediction.iloc[i]['latitude'], prediction.iloc[i]['longitude']],
-              radius=float(weight.iloc[i]["weight"])*15,
+              radius=np.exp(float(weight.iloc[i]["weight"])*0.21429),
               color="red",
               weight=2,
-              popup=folium.Popup("""<h3>This is the index of the prediction</h3>
+              popup=folium.Popup("""<h3>This is the weight of the prediction</h3>
                                  """+str(weight.iloc[i]["weight"]), width=500),
               fill_color='orange',
               fill_opacity = 0.5,
