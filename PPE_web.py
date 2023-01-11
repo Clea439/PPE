@@ -3,20 +3,23 @@ from Regression import regression
 from Mapping import mapping
 import pandas as pd
 
-df=pd.read_csv(r'C:\Users\lilia\OneDrive\Documents\Lilian\ING4_S2\PPE\PPE\regression.csv')
-d=database('C:/Users/lilia/OneDrive/Documents/Lilian/ING4_S2/PPE/PPE/Clean2gether.json')
+df=pd.read_csv(r'C:\Users\clead\Documents\ING5\ECE\PFE\PPE\PPE\regression.csv')
+d=database('C:/Users/clead/Documents/ING5/ECE/PFE/PPE/PPE/Clean2gether.json')
 
 epci_data=d.all_epci(df)
 county_data=d.all_county(df)
 
 r=regression(df)
 
-mlrlat,mlrlong,rmselat,rmselong,y_trainlat,y_trainlong,y_pred_mlrlong,y_pred_mlrlat,y_testlat,y_testlong=r.opti_regression()
+mlrlat,mlrlong,r2lat,r2long,y_trainlat,y_trainlong,y_pred_mlrlong,y_pred_mlrlat,y_testlat,y_testlong=r.opti_regression()
 mlr_weight,r2,rmse=r.weight_regression()
+print("")
+print("R2 (Coefficient of determination) is a measure of the goodness of fit of a model.")
+print("")
+print("Coefficient of determination for the latitude : "+str(r2lat*100)+" %")
+print("Coefficient of determination for the longitude : "+str(r2long*100)+" %")
+print("Coefficient of determination for the weight : "+str(r2*100)+" %")
 
-print("Mean square error for the latitude : "+str(rmselat))
-print("Mean square error for the longitude : "+str(rmselong))
-print("Mean square error for the weight : "+str(rmse))
 
 
 

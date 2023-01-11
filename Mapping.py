@@ -7,6 +7,7 @@ Created on Mon Apr  4 14:39:58 2022
 import pandas as pd
 import folium
 import numpy as np
+from datetime import datetime
 
 
 class mapping:
@@ -29,7 +30,7 @@ class mapping:
         for i in range(0,len(prediction)):
            folium.Circle(
               location=[prediction.iloc[i]['latitude'], prediction.iloc[i]['longitude']],
-              radius=550,
+              radius=1500,
               color="red",
               weight=2,
               fill_color='orange',
@@ -75,8 +76,11 @@ class mapping:
               radius=np.exp(float(weight.iloc[i]["weight"])*0.21429),
               color="red",
               weight=2,
-              popup=folium.Popup("""<h3>This is the weight of the prediction</h3>
-                                 """+str(weight.iloc[i]["weight"]), width=500),
+              popup=folium.Popup("""<h4 style="color:#FF0921;">This is the weight of the prediction : </h4><div style="color:#000000;">"""+str(weight.iloc[i]["weight"])+"""</div>
+                                 <h4 style="color:#FF0921;">Date : </h4><div style="color:#000000;">"""+str(datetime.today().strftime('%Y-%m-%d'))+"""</div>
+                                 <h4 style="color:#FF0921;">Longitude : </h4><div style="color:#000000;">"""+str(prediction.iloc[i]['longitude'])+"""</div>
+                                 <h4 style="color:#FF0921;">Latitude : </h4><div style="color:#000000;">"""+str(prediction.iloc[i]['latitude'])+"""</div>"""
+                                 , max_width=500),
               fill_color='orange',
               fill_opacity = 0.5,
            ).add_to(c)

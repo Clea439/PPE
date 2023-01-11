@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<head>    
+<html>
+<head>
+    
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
     
         <script>
@@ -9,39 +11,42 @@
     
     <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
     <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
-    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
     
             <meta name="viewport" content="width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             <style>
-                #map_83f3b20255a2467ca94f5b19cc3179fc {
+                #map_5b2059f693fdcfc38edaffb82f0463e5 {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
                     left: 0.0%;
                     top: 0.0%;
                 }
+                .leaflet-container { font-size: 1rem; }
             </style>
         
 </head>
-<body>    
+<body>
     
-            <div class="folium-map" id="map_83f3b20255a2467ca94f5b19cc3179fc" ></div>
+    
+            <div class="folium-map" id="map_5b2059f693fdcfc38edaffb82f0463e5" ></div>
         
 </body>
-<script>    
+<script>
     
-            var map_83f3b20255a2467ca94f5b19cc3179fc = L.map(
-                "map_83f3b20255a2467ca94f5b19cc3179fc",
+    
+            var map_5b2059f693fdcfc38edaffb82f0463e5 = L.map(
+                "map_5b2059f693fdcfc38edaffb82f0463e5",
                 {
                     center: [45.65, 0.15],
                     crs: L.CRS.EPSG3857,
@@ -55,218 +60,241 @@
 
         
     
-            var tile_layer_9b5fc8bfd92f4ac3a1a19d34832a3444 = L.tileLayer(
+            var tile_layer_f1c81a115fc3e899ba5fd371d60e43bf = L.tileLayer(
                 "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-                {"attribution": "Data by \u0026copy; \u003ca href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
-            ).addTo(map_83f3b20255a2467ca94f5b19cc3179fc);
+                {"attribution": "Data by \u0026copy; \u003ca target=\"_blank\" href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca target=\"_blank\" href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_5b2059f693fdcfc38edaffb82f0463e5);
         
     
-            var circle_1467e37e0a834d419e6920c85c8ddc9b = L.circle(
+            var circle_eea02c940764c509635083f7c7c5e6e2 = L.circle(
                 [45.785370544513476, -0.01572962821059442],
                 {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 331.92462337254733, "stroke": true, "weight": 2}
-            ).addTo(map_83f3b20255a2467ca94f5b19cc3179fc);
+            ).addTo(map_5b2059f693fdcfc38edaffb82f0463e5);
         
     
-        var popup_afcf394eed954214afa79e906861ffed = L.popup({"maxWidth": "100%", "width": 500});
+        var popup_a29830d268220eb1d01f0eece522ef00 = L.popup({"maxWidth": 500});
 
         
-            var html_6aa43b2e201a42349d9ed9e470bc44a1 = $(`<div id="html_6aa43b2e201a42349d9ed9e470bc44a1" style="width: 100.0%; height: 100.0%;"><h3>This is the weight of the prediction</h3>                                  27.089028443254264</div>`)[0];
-            popup_afcf394eed954214afa79e906861ffed.setContent(html_6aa43b2e201a42349d9ed9e470bc44a1);
+            
+                var html_d50dd657a7bb2a8ace3855c6657abd52 = $(`<div id="html_d50dd657a7bb2a8ace3855c6657abd52" style="width: 100.0%; height: 100.0%;"><h4 style="color:#FF0921;">This is the weight of the prediction : </h4><div style="color:#000000;">27.089028443254264</div>                                  <h4 style="color:#FF0921;">Date : </h4><div style="color:#000000;">2023-01-09</div>                                  <h4 style="color:#FF0921;">Longitude : </h4><div style="color:#000000;">-0.01572962821059442</div>                                  <h4 style="color:#FF0921;">Latitude : </h4><div style="color:#000000;">45.785370544513476</div></div>`)[0];
+                popup_a29830d268220eb1d01f0eece522ef00.setContent(html_d50dd657a7bb2a8ace3855c6657abd52);
+            
         
 
-        circle_1467e37e0a834d419e6920c85c8ddc9b.bindPopup(popup_afcf394eed954214afa79e906861ffed)
+        circle_eea02c940764c509635083f7c7c5e6e2.bindPopup(popup_a29830d268220eb1d01f0eece522ef00)
         ;
 
         
     
     
-            var circle_54b609d30f4a44a9886a2c2b687e2ad2 = L.circle(
+            var circle_5204e2db4deb5e6bf9e4e405faef218a = L.circle(
                 [45.785370544513476, -0.01572962821059442],
                 {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 331.92462337254733, "stroke": true, "weight": 2}
-            ).addTo(map_83f3b20255a2467ca94f5b19cc3179fc);
+            ).addTo(map_5b2059f693fdcfc38edaffb82f0463e5);
         
     
-        var popup_dc4fb03fdaa946bbb994781abdd3381c = L.popup({"maxWidth": "100%", "width": 500});
+        var popup_f79acb3e8b9abd0c04212b432eb41dde = L.popup({"maxWidth": 500});
 
         
-            var html_6da7a2a53b594a78b8e276f09788b827 = $(`<div id="html_6da7a2a53b594a78b8e276f09788b827" style="width: 100.0%; height: 100.0%;"><h3>This is the weight of the prediction</h3>                                  27.089028443254264</div>`)[0];
-            popup_dc4fb03fdaa946bbb994781abdd3381c.setContent(html_6da7a2a53b594a78b8e276f09788b827);
+            
+                var html_f87b96dd4cc476a318314638c30e8dfc = $(`<div id="html_f87b96dd4cc476a318314638c30e8dfc" style="width: 100.0%; height: 100.0%;"><h4 style="color:#FF0921;">This is the weight of the prediction : </h4><div style="color:#000000;">27.089028443254264</div>                                  <h4 style="color:#FF0921;">Date : </h4><div style="color:#000000;">2023-01-09</div>                                  <h4 style="color:#FF0921;">Longitude : </h4><div style="color:#000000;">-0.01572962821059442</div>                                  <h4 style="color:#FF0921;">Latitude : </h4><div style="color:#000000;">45.785370544513476</div></div>`)[0];
+                popup_f79acb3e8b9abd0c04212b432eb41dde.setContent(html_f87b96dd4cc476a318314638c30e8dfc);
+            
         
 
-        circle_54b609d30f4a44a9886a2c2b687e2ad2.bindPopup(popup_dc4fb03fdaa946bbb994781abdd3381c)
+        circle_5204e2db4deb5e6bf9e4e405faef218a.bindPopup(popup_f79acb3e8b9abd0c04212b432eb41dde)
         ;
 
         
     
     
-            var circle_b2e2a1c201024ed88fcfe32594feb0ca = L.circle(
+            var circle_38045c65f2f5b163458ed8b1656c8ae1 = L.circle(
                 [45.765504775530125, 0.07500926072790749],
                 {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 369.33295263125933, "stroke": true, "weight": 2}
-            ).addTo(map_83f3b20255a2467ca94f5b19cc3179fc);
+            ).addTo(map_5b2059f693fdcfc38edaffb82f0463e5);
         
     
-        var popup_e6c36c43cb4e4e309880bbc3b10b46b4 = L.popup({"maxWidth": "100%", "width": 500});
+        var popup_52179b946aa3b26922f9f836857574a8 = L.popup({"maxWidth": 500});
 
         
-            var html_7cdc2fe923104e56b5c55b9e9acd6224 = $(`<div id="html_7cdc2fe923104e56b5c55b9e9acd6224" style="width: 100.0%; height: 100.0%;"><h3>This is the weight of the prediction</h3>                                  27.587374809168878</div>`)[0];
-            popup_e6c36c43cb4e4e309880bbc3b10b46b4.setContent(html_7cdc2fe923104e56b5c55b9e9acd6224);
+            
+                var html_88119c1cc37d43625d7d17ce19c04812 = $(`<div id="html_88119c1cc37d43625d7d17ce19c04812" style="width: 100.0%; height: 100.0%;"><h4 style="color:#FF0921;">This is the weight of the prediction : </h4><div style="color:#000000;">27.587374809168878</div>                                  <h4 style="color:#FF0921;">Date : </h4><div style="color:#000000;">2023-01-09</div>                                  <h4 style="color:#FF0921;">Longitude : </h4><div style="color:#000000;">0.07500926072790749</div>                                  <h4 style="color:#FF0921;">Latitude : </h4><div style="color:#000000;">45.765504775530125</div></div>`)[0];
+                popup_52179b946aa3b26922f9f836857574a8.setContent(html_88119c1cc37d43625d7d17ce19c04812);
+            
         
 
-        circle_b2e2a1c201024ed88fcfe32594feb0ca.bindPopup(popup_e6c36c43cb4e4e309880bbc3b10b46b4)
+        circle_38045c65f2f5b163458ed8b1656c8ae1.bindPopup(popup_52179b946aa3b26922f9f836857574a8)
         ;
 
         
     
     
-            var circle_902dedeed68245c5a18d5bc844b74180 = L.circle(
+            var circle_ddaf33b2967e974fa964c0b58334ec68 = L.circle(
                 [45.736803573155946, -0.022933076711389465],
                 {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 422.5024915910364, "stroke": true, "weight": 2}
-            ).addTo(map_83f3b20255a2467ca94f5b19cc3179fc);
+            ).addTo(map_5b2059f693fdcfc38edaffb82f0463e5);
         
     
-        var popup_4b3e90083b2642218dbb86819d4d5f00 = L.popup({"maxWidth": "100%", "width": 500});
+        var popup_a4fb048b02fd482913e76dbed8d1bf98 = L.popup({"maxWidth": 500});
 
         
-            var html_d0dc35cc7a424b09b4f4d4d17f21f540 = $(`<div id="html_d0dc35cc7a424b09b4f4d4d17f21f540" style="width: 100.0%; height: 100.0%;"><h3>This is the weight of the prediction</h3>                                  28.21501397189197</div>`)[0];
-            popup_4b3e90083b2642218dbb86819d4d5f00.setContent(html_d0dc35cc7a424b09b4f4d4d17f21f540);
+            
+                var html_fe5d03666df50c4e3cfb70f5eacb2c18 = $(`<div id="html_fe5d03666df50c4e3cfb70f5eacb2c18" style="width: 100.0%; height: 100.0%;"><h4 style="color:#FF0921;">This is the weight of the prediction : </h4><div style="color:#000000;">28.21501397189197</div>                                  <h4 style="color:#FF0921;">Date : </h4><div style="color:#000000;">2023-01-09</div>                                  <h4 style="color:#FF0921;">Longitude : </h4><div style="color:#000000;">-0.022933076711389465</div>                                  <h4 style="color:#FF0921;">Latitude : </h4><div style="color:#000000;">45.736803573155946</div></div>`)[0];
+                popup_a4fb048b02fd482913e76dbed8d1bf98.setContent(html_fe5d03666df50c4e3cfb70f5eacb2c18);
+            
         
 
-        circle_902dedeed68245c5a18d5bc844b74180.bindPopup(popup_4b3e90083b2642218dbb86819d4d5f00)
+        circle_ddaf33b2967e974fa964c0b58334ec68.bindPopup(popup_a4fb048b02fd482913e76dbed8d1bf98)
         ;
 
         
     
     
-            var circle_5f1ed5dddbb24870834a89c8440c99fe = L.circle(
+            var circle_3a18a2075f7018cca9105921452122aa = L.circle(
                 [45.794142746564425, -0.11858667106746888],
                 {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 310.06163009211247, "stroke": true, "weight": 2}
-            ).addTo(map_83f3b20255a2467ca94f5b19cc3179fc);
+            ).addTo(map_5b2059f693fdcfc38edaffb82f0463e5);
         
     
-        var popup_16548f6a57da47c393b2ed145863acc4 = L.popup({"maxWidth": "100%", "width": 500});
+        var popup_baaebb55f8afafd7cee04df7b01aa904 = L.popup({"maxWidth": 500});
 
         
-            var html_29d070bd1e7f4614934ef42327caefeb = $(`<div id="html_29d070bd1e7f4614934ef42327caefeb" style="width: 100.0%; height: 100.0%;"><h3>This is the weight of the prediction</h3>                                  26.771062972926867</div>`)[0];
-            popup_16548f6a57da47c393b2ed145863acc4.setContent(html_29d070bd1e7f4614934ef42327caefeb);
+            
+                var html_97f76fa26d17bb2eefe1451e8bb4b63b = $(`<div id="html_97f76fa26d17bb2eefe1451e8bb4b63b" style="width: 100.0%; height: 100.0%;"><h4 style="color:#FF0921;">This is the weight of the prediction : </h4><div style="color:#000000;">26.771062972926867</div>                                  <h4 style="color:#FF0921;">Date : </h4><div style="color:#000000;">2023-01-09</div>                                  <h4 style="color:#FF0921;">Longitude : </h4><div style="color:#000000;">-0.11858667106746888</div>                                  <h4 style="color:#FF0921;">Latitude : </h4><div style="color:#000000;">45.794142746564425</div></div>`)[0];
+                popup_baaebb55f8afafd7cee04df7b01aa904.setContent(html_97f76fa26d17bb2eefe1451e8bb4b63b);
+            
         
 
-        circle_5f1ed5dddbb24870834a89c8440c99fe.bindPopup(popup_16548f6a57da47c393b2ed145863acc4)
+        circle_3a18a2075f7018cca9105921452122aa.bindPopup(popup_baaebb55f8afafd7cee04df7b01aa904)
         ;
 
         
     
     
-            var circle_08b36c1b9b844f2e970a2e5caf69ad87 = L.circle(
+            var circle_9c793b5ee47663bd907608b1ce93204b = L.circle(
                 [45.794142746564425, -0.11858667106746888],
                 {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 310.06163009211247, "stroke": true, "weight": 2}
-            ).addTo(map_83f3b20255a2467ca94f5b19cc3179fc);
+            ).addTo(map_5b2059f693fdcfc38edaffb82f0463e5);
         
     
-        var popup_67851f9cdbe04e2691d0dc66a65b42bf = L.popup({"maxWidth": "100%", "width": 500});
+        var popup_1ae91a06a966f2c6114ab0aeefcfff58 = L.popup({"maxWidth": 500});
 
         
-            var html_b8cbe008155441b4a9f9314ec9b006c9 = $(`<div id="html_b8cbe008155441b4a9f9314ec9b006c9" style="width: 100.0%; height: 100.0%;"><h3>This is the weight of the prediction</h3>                                  26.771062972926867</div>`)[0];
-            popup_67851f9cdbe04e2691d0dc66a65b42bf.setContent(html_b8cbe008155441b4a9f9314ec9b006c9);
+            
+                var html_8276227c41af3d136cacbd372ad05708 = $(`<div id="html_8276227c41af3d136cacbd372ad05708" style="width: 100.0%; height: 100.0%;"><h4 style="color:#FF0921;">This is the weight of the prediction : </h4><div style="color:#000000;">26.771062972926867</div>                                  <h4 style="color:#FF0921;">Date : </h4><div style="color:#000000;">2023-01-09</div>                                  <h4 style="color:#FF0921;">Longitude : </h4><div style="color:#000000;">-0.11858667106746888</div>                                  <h4 style="color:#FF0921;">Latitude : </h4><div style="color:#000000;">45.794142746564425</div></div>`)[0];
+                popup_1ae91a06a966f2c6114ab0aeefcfff58.setContent(html_8276227c41af3d136cacbd372ad05708);
+            
         
 
-        circle_08b36c1b9b844f2e970a2e5caf69ad87.bindPopup(popup_67851f9cdbe04e2691d0dc66a65b42bf)
+        circle_9c793b5ee47663bd907608b1ce93204b.bindPopup(popup_1ae91a06a966f2c6114ab0aeefcfff58)
         ;
 
         
     
     
-            var circle_bc9275c908d94e97ae71b7c5a8de92b4 = L.circle(
+            var circle_25160deb159937ef70f7be1d07d53f67 = L.circle(
                 [45.736803573155946, -0.022933076711389465],
                 {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 422.5024915910364, "stroke": true, "weight": 2}
-            ).addTo(map_83f3b20255a2467ca94f5b19cc3179fc);
+            ).addTo(map_5b2059f693fdcfc38edaffb82f0463e5);
         
     
-        var popup_d70456eba3d34dbcb1d6d5a30f3d0921 = L.popup({"maxWidth": "100%", "width": 500});
+        var popup_6654a7294e2f4b264a92cdf2e91df837 = L.popup({"maxWidth": 500});
 
         
-            var html_f5fdb34b9895436585d8b2350b67cb6d = $(`<div id="html_f5fdb34b9895436585d8b2350b67cb6d" style="width: 100.0%; height: 100.0%;"><h3>This is the weight of the prediction</h3>                                  28.21501397189197</div>`)[0];
-            popup_d70456eba3d34dbcb1d6d5a30f3d0921.setContent(html_f5fdb34b9895436585d8b2350b67cb6d);
+            
+                var html_ca69defd2ba42aeed8e56f2c5e29c701 = $(`<div id="html_ca69defd2ba42aeed8e56f2c5e29c701" style="width: 100.0%; height: 100.0%;"><h4 style="color:#FF0921;">This is the weight of the prediction : </h4><div style="color:#000000;">28.21501397189197</div>                                  <h4 style="color:#FF0921;">Date : </h4><div style="color:#000000;">2023-01-09</div>                                  <h4 style="color:#FF0921;">Longitude : </h4><div style="color:#000000;">-0.022933076711389465</div>                                  <h4 style="color:#FF0921;">Latitude : </h4><div style="color:#000000;">45.736803573155946</div></div>`)[0];
+                popup_6654a7294e2f4b264a92cdf2e91df837.setContent(html_ca69defd2ba42aeed8e56f2c5e29c701);
+            
         
 
-        circle_bc9275c908d94e97ae71b7c5a8de92b4.bindPopup(popup_d70456eba3d34dbcb1d6d5a30f3d0921)
+        circle_25160deb159937ef70f7be1d07d53f67.bindPopup(popup_6654a7294e2f4b264a92cdf2e91df837)
         ;
 
         
     
     
-            var circle_7322bbc465dd4f4893220f9515b3697d = L.circle(
+            var circle_c7908be866d2376751e1e4bcfe310085 = L.circle(
                 [45.74213561226314, -0.024938460831302772],
                 {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 474.68661471605634, "stroke": true, "weight": 2}
-            ).addTo(map_83f3b20255a2467ca94f5b19cc3179fc);
+            ).addTo(map_5b2059f693fdcfc38edaffb82f0463e5);
         
     
-        var popup_76e1f1dea2314e23a7dc15cd5b46bc95 = L.popup({"maxWidth": "100%", "width": 500});
+        var popup_8d3cb3c3c04e1ef07c2b0a24714f8b11 = L.popup({"maxWidth": 500});
 
         
-            var html_3472c13456374a788571b6e68f4e7952 = $(`<div id="html_3472c13456374a788571b6e68f4e7952" style="width: 100.0%; height: 100.0%;"><h3>This is the weight of the prediction</h3>                                  28.758480693479488</div>`)[0];
-            popup_76e1f1dea2314e23a7dc15cd5b46bc95.setContent(html_3472c13456374a788571b6e68f4e7952);
+            
+                var html_a4be06f6e6e1da25204ca1738a9fb365 = $(`<div id="html_a4be06f6e6e1da25204ca1738a9fb365" style="width: 100.0%; height: 100.0%;"><h4 style="color:#FF0921;">This is the weight of the prediction : </h4><div style="color:#000000;">28.758480693479488</div>                                  <h4 style="color:#FF0921;">Date : </h4><div style="color:#000000;">2023-01-09</div>                                  <h4 style="color:#FF0921;">Longitude : </h4><div style="color:#000000;">-0.024938460831302772</div>                                  <h4 style="color:#FF0921;">Latitude : </h4><div style="color:#000000;">45.74213561226314</div></div>`)[0];
+                popup_8d3cb3c3c04e1ef07c2b0a24714f8b11.setContent(html_a4be06f6e6e1da25204ca1738a9fb365);
+            
         
 
-        circle_7322bbc465dd4f4893220f9515b3697d.bindPopup(popup_76e1f1dea2314e23a7dc15cd5b46bc95)
+        circle_c7908be866d2376751e1e4bcfe310085.bindPopup(popup_8d3cb3c3c04e1ef07c2b0a24714f8b11)
         ;
 
         
     
     
-            var circle_f62a3b0c777b456598f9b729ca9d2c34 = L.circle(
+            var circle_2d93012379e9d19dd65d57d9c77d18f9 = L.circle(
                 [45.74213561226314, -0.024938460831302772],
                 {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 474.68661471605634, "stroke": true, "weight": 2}
-            ).addTo(map_83f3b20255a2467ca94f5b19cc3179fc);
+            ).addTo(map_5b2059f693fdcfc38edaffb82f0463e5);
         
     
-        var popup_6f669096bc814da7a3001ac356a74940 = L.popup({"maxWidth": "100%", "width": 500});
+        var popup_dc4755bf5be9e9936f5ee58681ae77e0 = L.popup({"maxWidth": 500});
 
         
-            var html_52dd2055219b4619b799da23e4b63302 = $(`<div id="html_52dd2055219b4619b799da23e4b63302" style="width: 100.0%; height: 100.0%;"><h3>This is the weight of the prediction</h3>                                  28.758480693479488</div>`)[0];
-            popup_6f669096bc814da7a3001ac356a74940.setContent(html_52dd2055219b4619b799da23e4b63302);
+            
+                var html_30119772258f992a68966e4a07130f52 = $(`<div id="html_30119772258f992a68966e4a07130f52" style="width: 100.0%; height: 100.0%;"><h4 style="color:#FF0921;">This is the weight of the prediction : </h4><div style="color:#000000;">28.758480693479488</div>                                  <h4 style="color:#FF0921;">Date : </h4><div style="color:#000000;">2023-01-09</div>                                  <h4 style="color:#FF0921;">Longitude : </h4><div style="color:#000000;">-0.024938460831302772</div>                                  <h4 style="color:#FF0921;">Latitude : </h4><div style="color:#000000;">45.74213561226314</div></div>`)[0];
+                popup_dc4755bf5be9e9936f5ee58681ae77e0.setContent(html_30119772258f992a68966e4a07130f52);
+            
         
 
-        circle_f62a3b0c777b456598f9b729ca9d2c34.bindPopup(popup_6f669096bc814da7a3001ac356a74940)
+        circle_2d93012379e9d19dd65d57d9c77d18f9.bindPopup(popup_dc4755bf5be9e9936f5ee58681ae77e0)
         ;
 
         
     
     
-            var circle_dfe2ca5da54f4f058614cd4244e5cfce = L.circle(
+            var circle_4352a9cca5e3197285ef77e665f37e35 = L.circle(
                 [45.785370544513476, -0.01572962821059442],
                 {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 331.92462337254733, "stroke": true, "weight": 2}
-            ).addTo(map_83f3b20255a2467ca94f5b19cc3179fc);
+            ).addTo(map_5b2059f693fdcfc38edaffb82f0463e5);
         
     
-        var popup_a72e2dc804224a96add882e1638fa581 = L.popup({"maxWidth": "100%", "width": 500});
+        var popup_91547e412b0a63a732cc4fad4e08cc03 = L.popup({"maxWidth": 500});
 
         
-            var html_5a388eeb39fc41c8bb2ef00e4c7dc11e = $(`<div id="html_5a388eeb39fc41c8bb2ef00e4c7dc11e" style="width: 100.0%; height: 100.0%;"><h3>This is the weight of the prediction</h3>                                  27.089028443254264</div>`)[0];
-            popup_a72e2dc804224a96add882e1638fa581.setContent(html_5a388eeb39fc41c8bb2ef00e4c7dc11e);
+            
+                var html_d8b526acb8d529e256c4f9b0e9df2484 = $(`<div id="html_d8b526acb8d529e256c4f9b0e9df2484" style="width: 100.0%; height: 100.0%;"><h4 style="color:#FF0921;">This is the weight of the prediction : </h4><div style="color:#000000;">27.089028443254264</div>                                  <h4 style="color:#FF0921;">Date : </h4><div style="color:#000000;">2023-01-09</div>                                  <h4 style="color:#FF0921;">Longitude : </h4><div style="color:#000000;">-0.01572962821059442</div>                                  <h4 style="color:#FF0921;">Latitude : </h4><div style="color:#000000;">45.785370544513476</div></div>`)[0];
+                popup_91547e412b0a63a732cc4fad4e08cc03.setContent(html_d8b526acb8d529e256c4f9b0e9df2484);
+            
         
 
-        circle_dfe2ca5da54f4f058614cd4244e5cfce.bindPopup(popup_a72e2dc804224a96add882e1638fa581)
+        circle_4352a9cca5e3197285ef77e665f37e35.bindPopup(popup_91547e412b0a63a732cc4fad4e08cc03)
         ;
 
         
     
     
-            var circle_722bb2e718f84fefbf3606ae822de6b6 = L.circle(
+            var circle_9fc939f79fa2dcc45ec9be89c090ca2e = L.circle(
                 [45.785370544513476, -0.01572962821059442],
                 {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 331.92462337254733, "stroke": true, "weight": 2}
-            ).addTo(map_83f3b20255a2467ca94f5b19cc3179fc);
+            ).addTo(map_5b2059f693fdcfc38edaffb82f0463e5);
         
     
-        var popup_4789d23975d348b798ec468c712fd464 = L.popup({"maxWidth": "100%", "width": 500});
+        var popup_8c59ff989b9cea42803ffadf4f10ad80 = L.popup({"maxWidth": 500});
 
         
-            var html_cd7490b551d7419f8201a34d35b0d0c6 = $(`<div id="html_cd7490b551d7419f8201a34d35b0d0c6" style="width: 100.0%; height: 100.0%;"><h3>This is the weight of the prediction</h3>                                  27.089028443254264</div>`)[0];
-            popup_4789d23975d348b798ec468c712fd464.setContent(html_cd7490b551d7419f8201a34d35b0d0c6);
+            
+                var html_4e0509f0edfd3daaacec462a9635a6fd = $(`<div id="html_4e0509f0edfd3daaacec462a9635a6fd" style="width: 100.0%; height: 100.0%;"><h4 style="color:#FF0921;">This is the weight of the prediction : </h4><div style="color:#000000;">27.089028443254264</div>                                  <h4 style="color:#FF0921;">Date : </h4><div style="color:#000000;">2023-01-09</div>                                  <h4 style="color:#FF0921;">Longitude : </h4><div style="color:#000000;">-0.01572962821059442</div>                                  <h4 style="color:#FF0921;">Latitude : </h4><div style="color:#000000;">45.785370544513476</div></div>`)[0];
+                popup_8c59ff989b9cea42803ffadf4f10ad80.setContent(html_4e0509f0edfd3daaacec462a9635a6fd);
+            
         
 
-        circle_722bb2e718f84fefbf3606ae822de6b6.bindPopup(popup_4789d23975d348b798ec468c712fd464)
+        circle_9fc939f79fa2dcc45ec9be89c090ca2e.bindPopup(popup_8c59ff989b9cea42803ffadf4f10ad80)
         ;
 
         
     
 </script>
+</html>

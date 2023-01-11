@@ -7,8 +7,8 @@ import pandas as pd
 import folium
 
 app = Flask(__name__,template_folder='templates')
-df=pd.read_csv(r'C:\Users\lilia\OneDrive\Documents\Lilian\ING4_S2\PPE\PPE\regression.csv')
-d=database('C:/Users/lilia/OneDrive/Documents/Lilian/ING4_S2/PPE/PPE/Clean2gether.json')
+df=pd.read_csv(r'C:\Users\clead\Documents\ING5\ECE\PFE\PPE\PPE\regression.csv')
+d=database('C:/Users/clead/Documents/ING5/ECE/PFE/PPE/PPE/Clean2gether.json')
 
 epci_data=d.all_epci(df)
 county_data=d.all_county(df)

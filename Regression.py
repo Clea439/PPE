@@ -73,12 +73,12 @@ class regression:
             
             best_mlr_lat = mlr['mlr_lat'][mlr["r2_lat"].idxmax()]
             best_mlr_long = mlr['mlr_long'][mlr["r2_long"].idxmax()]
-            rmselat = mlr['rmselat'][mlr["r2_lat"].idxmax()]
-            rmselong = mlr['rmselong'][mlr["r2_long"].idxmax()]
+            r2lat = mlr['r2_lat'][mlr["r2_lat"].idxmax()]
+            r2long = mlr['r2_long'][mlr["r2_long"].idxmax()]
         
             interval = time.time() - start_time
             
             print("loading time : "+str(interval)+" sec !" )
             
-            return best_mlr_lat,best_mlr_long,rmselat,rmselong,y_trainlat,y_trainlong,y_pred_mlrlong,y_pred_mlrlat,y_testlat,y_testlong
+            return best_mlr_lat,best_mlr_long,r2lat,r2long,y_trainlat,y_trainlong,y_pred_mlrlong,y_pred_mlrlat,y_testlat,y_testlong
 
