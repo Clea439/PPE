@@ -59,7 +59,7 @@ class RegressionSannois(object):
             r2 = r2_score(y_test, weight)
             rmse = mean_squared_error(y_test, weight, squared=False)
             
-            return weight, y_train,r2,rmse
+            return weight, y_train, y_test,r2,rmse
 
     def type(self):
             data_base=self.data_base.dropna()
@@ -75,7 +75,7 @@ class RegressionSannois(object):
 
             AccuracyScore = accuracy_score(y_test, type)
             
-            return type, y_train, AccuracyScore
+            return type, y_train, y_test, AccuracyScore
 
     def price(self, prediction):
         data_base=self.data_base.dropna()
