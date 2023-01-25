@@ -12,7 +12,7 @@ class RegressionSannois(object):
          self.data_base = data_base
     def long_reg(self):
         data_base=self.data_base.dropna()
-        x = data_base[["VILLE","Quartier"]]
+        x = data_base[["VILLE"]]
         y = data_base["Longitude"]
 
         x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = 0.15, random_state = 42, shuffle=True)
@@ -29,7 +29,7 @@ class RegressionSannois(object):
 
     def lat_reg(self):
         data_base=self.data_base.dropna()
-        x = data_base[["VILLE","Quartier"]]
+        x = data_base[["VILLE"]]
         y = data_base["Latitude"]
 
         x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = 0.15, random_state = 42, shuffle=True)
@@ -46,7 +46,7 @@ class RegressionSannois(object):
 
     def tonnage(self, prediction):
             data_base=self.data_base.dropna()
-            x = prediction[["Latitude","Longitude","Type"]]
+            x = data_base[["VILLE"]]
             y = data_base["tonnage"]
 
             x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = 0.15, random_state = 42, shuffle=True)
@@ -63,7 +63,7 @@ class RegressionSannois(object):
 
     def type(self):
             data_base=self.data_base.dropna()
-            x = data_base[["VILLE","Quartier"]]
+            x = data_base[["VILLE"]]
             y = data_base["TYPE"]
 
             x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = 0.15, random_state = 42, shuffle=True)
@@ -79,7 +79,7 @@ class RegressionSannois(object):
 
     def price(self, prediction):
         data_base=self.data_base.dropna()
-        x = data_base[["VILLE","Quartier"]]
+        x = data_base[["VILLE"]]
         y = data_base["Tarif"]
 
         x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = 0.15, random_state = 42, shuffle=True)

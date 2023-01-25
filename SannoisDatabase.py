@@ -11,10 +11,11 @@ class database(object):
         del data["EMPLACEMENT"]
         del data["PRENOM"]
         del data["MAIL"]
+        del data["Quartier"]
 
         data = data.dropna()
 
-        data = data.astype({"VILLE":"int","Quartier":"int", "TYPE": "int"})
+        data = data.astype({"VILLE":"int","TYPE": "int"})
         #quartierDf = pd.DataFrame(columns=['Name','Weight'])
         #for quartier in data["Quartier"]:
         #    temp = False
