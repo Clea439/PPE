@@ -77,23 +77,6 @@ class RegressionSannois(object):
             
             return type, y_train, y_test, AccuracyScore
 
-    def price(self, prediction):
-        data_base=self.data_base.dropna()
-        x = data_base[["VILLE"]]
-        y = data_base["Tarif"]
-
-        x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = 0.15, random_state = 42, shuffle=True)
-
-        mlr = HistGradientBoostingRegressor()
-        mlr.fit(x_train, y_train)
-
-        tarif=mlr.predict(x_test)
-
-        r2 = r2_score(y_test, tarif)
-        rmse = mean_squared_error(y_test, tarif, squared=False)
-            
-        return tarif,y_train,r2,rmse
-
     def opti_regression(self):
 
         start_time = time.time()

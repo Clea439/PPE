@@ -43,34 +43,21 @@ class Main:
         frames = (result, tonnages)
         result = pd.concat(frames,axis=1)
         result.columns = ['Longitude','Latitude', 'Type','Tonnage']
-
-        # Prédiction du Prix
-        price,y_trainPrix,r2Price,rmsePrice = r.price(result)
-
-        # Ajout de la prédiction du prix à notre dataframe
-        prix = (y_trainPrix, pd.DataFrame(price))
-        prix = pd.concat(prix,axis=0)
-        frames = (result, prix)
-        result = pd.concat(frames,axis=1)
-        result.columns = ['Longitude','Latitude', 'Type','Tonnage', 'Prix']
-        
         
         # Creation de la dataframe permettant d'afficher les prédictions et les valeurs réelles dans la map
         value = (pd.DataFrame(y_pred_mlrlong), pd.DataFrame(y_pred_mlrlat), pd.DataFrame(mlr_type), pd.DataFrame(mlr_tonnage))
         predictions = pd.concat(value,axis=1)
         predictions.columns = ['LongitudePred','LatitudePred', 'TypePred','TonnagePred']
-        print(predictions)
+        predictions['Verification'] = 0
         TrueValue = (pd.DataFrame(y_testlong), pd.DataFrame(y_testlat), pd.DataFrame(y_testType), pd.DataFrame(y_testTonnage))
         TrueValue = pd.concat(TrueValue,axis=1)
         TrueValue.columns = ['LongitudeReel','LatitudeReel', 'TypeReel','TonnageReel']
-        print(TrueValue)
 
 
         print("Coefficient of determination for the latitude : "+str(r2lat*100)+" %")
         print("Coefficient of determination for the longitude : "+str(r2long*100)+" %")
         print("Coefficient of determination for the tonnage : "+str(r2Type*100)+" %")
         print("Coefficient of determination for the type : "+str(AccuracyScore*100)+" %")
-        print("Coefficient of determination for the Price : "+str(r2Price*100)+" %")
 
         return predictions, TrueValue
 

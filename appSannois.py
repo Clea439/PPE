@@ -28,6 +28,16 @@ def scdPage():
    else :
             return render_template('index.html')
 
+@app.route('/index/<id>', methods=["GET","POST"])
+def setTrue(id):
+    print(id)
+    prediction.at[int(id),'Verification'] = 1
+    print( prediction.iloc[int(id)]['Verification'])
+    print(prediction)
+    m=mapping(prediction, trueValue)
+    c=m.create_map_prediction()
+    return c._repr_html_()
+
 
 if __name__ == '__main__':
     app.run()(debug = True) 
