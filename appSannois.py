@@ -8,12 +8,15 @@ import folium
 
 app = Flask(__name__,template_folder='templates')
 d=database('sannois_depot_sauvage.csv')
+travaux =pd.read_csv('Liste-travaux.csv')
+travaux = travaux.dropna()
 
-data= Main(d)
+data= Main(d, travaux)
 prediction, trueValue = data.get_regressions()
 dechetteries =pd.read_csv('DECHETTERIE.csv')
 dechetteries = dechetteries.dropna()
-m=mapping(prediction, trueValue, dechetteries)
+
+m=mapping(prediction, trueValue, dechetteries, travaux)
 
 @app.route('/')  
 def home ():  

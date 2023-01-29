@@ -9,10 +9,11 @@ import geopy.distance
 
 class mapping:
     
-    def __init__(self, prediction, trueValue, dechetteries):
+    def __init__(self, prediction, trueValue, dechetteries, travaux):
                 self.prediction = prediction
                 self.trueValue = trueValue
                 self.dechetteries = dechetteries
+                self.travaux = travaux
                 self.c = folium.Map(location=[ 48.972065, 2.253474])
 
     def CalculDistance(self, longitude, latitude):
@@ -103,7 +104,6 @@ class mapping:
                    ).add_to(self.c)
         
            for i in range(0,len(self.trueValue)):
-                print("tre"+str(len(self.trueValue)))
                 cmpt = 0
                 type = ""
                 tonnage = ""
@@ -239,6 +239,10 @@ class mapping:
            for i in range(0,len(self.dechetteries)):
              icon_hz = dict(prefix='fa', color='red', icon_color='darkred', icon='cny')
              folium.Marker([self.dechetteries.iloc[i]['Latitude'], self.dechetteries.iloc[i]['Longitude']], popup = str(self.dechetteries.iloc[i]['Name']),icon=folium.Icon(color='green',icon='trash')).add_to(self.c)
+
+           for i in range(0,len(self.travaux)):
+             icon_hz = dict(prefix='fa', color='red', icon_color='darkred', icon='cny')
+             folium.Marker([self.travaux.iloc[i]['Latitude'], self.travaux.iloc[i]['Longitude']], popup = str(self.travaux.iloc[i]['Types de travaux']),icon=folium.Icon(color='red',icon='warning-sign')).add_to(self.c)
            return self.c
 
     def validation_dechet(self, prediction):

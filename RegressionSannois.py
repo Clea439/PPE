@@ -8,11 +8,29 @@ import time
 import numpy as np
 
 class RegressionSannois(object):
-    def __init__(self, data_base):
+    def __init__(self, data_base, travaux):
          self.data_base = data_base
+         self.travaux = travaux
+         self.CountTravaux = self.travaux.groupby('Ville')['Ville'].value_counts()
+         self.CalculTravaux()
+
+    def CalculTravaux(self):
+        travauxVille = []
+        for i in range(0, len(self.data_base)):
+            temp = 0
+            for k in range(0, len(self.CountTravaux)):
+                if(self.CountTravaux.index.tolist()[k][0] == self.data_base.iloc[i]["VILLE"]):
+                    travauxVille.append(self.CountTravaux.iloc[k])
+                    k = len(self.CountTravaux)
+                    temp = 1
+            if temp == 0:
+                travauxVille.append(0)
+            
+        self.data_base['NbTravaux'] = travauxVille
+
     def long_reg(self):
         data_base=self.data_base.dropna()
-        x = data_base[["VILLE"]]
+        x = data_base[["VILLE","NbTravaux"]]
         y = data_base["Longitude"]
 
         x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = 0.15, random_state = 42, shuffle=True)
@@ -29,7 +47,7 @@ class RegressionSannois(object):
 
     def lat_reg(self):
         data_base=self.data_base.dropna()
-        x = data_base[["VILLE"]]
+        x = data_base[["VILLE","NbTravaux"]]
         y = data_base["Latitude"]
 
         x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = 0.15, random_state = 42, shuffle=True)
@@ -46,7 +64,7 @@ class RegressionSannois(object):
 
     def tonnage(self, prediction):
             data_base=self.data_base.dropna()
-            x = data_base[["VILLE"]]
+            x = data_base[["VILLE","NbTravaux"]]
             y = data_base["tonnage"]
 
             x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = 0.15, random_state = 42, shuffle=True)
@@ -63,7 +81,7 @@ class RegressionSannois(object):
 
     def type(self):
             data_base=self.data_base.dropna()
-            x = data_base[["VILLE"]]
+            x = data_base[["VILLE","NbTravaux"]]
             y = data_base["TYPE"]
 
             x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = 0.15, random_state = 42, shuffle=True)

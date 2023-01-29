@@ -5,12 +5,13 @@ import pandas as pd
 
 
 class Main:
-    def __init__(self, d):
+    def __init__(self, d, travaux):
         self.data = d.create_data()
+        self.travaux = travaux
 
     def get_regressions(self):
 
-        r=RegressionSannois(self.data)
+        r=RegressionSannois(self.data, self.travaux)
 
         # Prediction Longitude/Latitude
         mlrlat,mlrlong,r2lat,r2long,y_trainlat,y_trainlong,y_pred_mlrlong,y_pred_mlrlat,y_testlat,y_testlong=r.opti_regression()
