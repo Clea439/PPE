@@ -11,6 +11,9 @@ d=database('sannois_depot_sauvage.csv')
 
 data= Main(d)
 prediction, trueValue = data.get_regressions()
+dechetteries =pd.read_csv('DECHETTERIE.csv')
+dechetteries = dechetteries.dropna()
+m=mapping(prediction, trueValue, dechetteries)
 
 @app.route('/')  
 def home ():  
@@ -19,7 +22,6 @@ def home ():
 @app.route('/index', methods=["GET","POST"])
 def scdPage():
    if request.method == "POST":
-        m=mapping(prediction, trueValue)
         c=m.create_map_prediction()
 
         return c._repr_html_()
@@ -30,12 +32,8 @@ def scdPage():
 
 @app.route('/index/<id>', methods=["GET","POST"])
 def setTrue(id):
-    print(id)
     prediction.at[int(id),'Verification'] = 1
-    print( prediction.iloc[int(id)]['Verification'])
-    print(prediction)
-    m=mapping(prediction, trueValue)
-    c=m.create_map_prediction()
+    c = m.validation_dechet(prediction)
     return c._repr_html_()
 
 

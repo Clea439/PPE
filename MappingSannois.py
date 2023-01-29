@@ -9,11 +9,11 @@ import geopy.distance
 
 class mapping:
     
-    def __init__(self, prediction, trueValue):
+    def __init__(self, prediction, trueValue, dechetteries):
                 self.prediction = prediction
                 self.trueValue = trueValue
-                self.dechetteries =pd.read_csv('DECHETTERIE.csv')
-                self.dechetteries = self.dechetteries.dropna()
+                self.dechetteries = dechetteries
+                self.c = folium.Map(location=[ 48.972065, 2.253474])
 
     def CalculDistance(self, longitude, latitude):
             Mindistance = 10000000000000
@@ -30,82 +30,80 @@ class mapping:
             return MinName, Mindistance
 
     def create_map_prediction(self):
-        
-           c = folium.Map(location=[ 48.972065, 2.253474])
 
            for i in range(0,len(self.prediction)):
-               cmpt = 0
-               type = ""
-               tonnage = ""
-               prix = 0
-               if (self.prediction.iloc[i]['Verification'] == 0):
-                    couleur = "#00fbff"
-               else:
-                   couleur = "#000000"
+               if self.prediction.iloc[i]['Verification'] == 0:
+                   cmpt = 0
+                   type = ""
+                   tonnage = ""
+                   prix = 0
+                   couleur = "#00fbff"
 
-               self.name, self.distance = self.CalculDistance(self.prediction.iloc[i]['LongitudePred'],self.prediction.iloc[i]['LatitudePred'])
-               for j in range(0,len(self.prediction)):
-                    if ((self.prediction.iloc[i]['LatitudePred'] == self.prediction.iloc[j]['LatitudePred']) and self.prediction.iloc[i]['LongitudePred'] == self.prediction.iloc[j]['LongitudePred']):
-                        if cmpt < 16:
-                            cmpt = cmpt+ 1
-                        if(cmpt*6 < 20 and self.prediction.iloc[i]['Verification'] == 0):
-                            couleur = "#00fbff"
-                        elif(cmpt*6 < 40 and self.prediction.iloc[i]['Verification'] == 0):
-                            couleur = "#00ccff"
-                        elif(cmpt*6 < 60 and self.prediction.iloc[i]['Verification'] == 0):
-                            couleur = "#00a2ff"
-                        elif(cmpt*6 < 80 and self.prediction.iloc[i]['Verification'] == 0):
-                            couleur = "#0048ff"
-                        elif(self.prediction.iloc[i]['Verification'] == 0):
-                            couleur = "#3300ff"
+                   self.name, self.distance = self.CalculDistance(self.prediction.iloc[i]['LongitudePred'],self.prediction.iloc[i]['LatitudePred'])
+                   for j in range(0,len(self.prediction)):
+             
+                        if ((self.prediction.iloc[i]['LatitudePred'] == self.prediction.iloc[j]['LatitudePred']) and self.prediction.iloc[i]['LongitudePred'] == self.prediction.iloc[j]['LongitudePred']):
+                            if cmpt < 16:
+                                cmpt = cmpt+ 1
+                            if(cmpt*6 < 20):
+                                couleur = "#00fbff"
+                            elif(cmpt*6 < 40):
+                                couleur = "#00ccff"
+                            elif(cmpt*6 < 60):
+                                couleur = "#00a2ff"
+                            elif(cmpt*6 < 80):
+                                couleur = "#0048ff"
+                            else:
+                                couleur = "#3300ff"
 
 
-               if (int(self.prediction.iloc[i]["TypePred"]) == 1):
-                    type = "Objet Encombrant"
-                    prix = 0.094 * self.prediction.iloc[i]["TonnagePred"] + self.distance * 0.13
-               elif(int(self.prediction.iloc[i]["TypePred"]) == 2):
-                    type = "DIB, ordures Menagères"
-                    prix = 0.138 * self.prediction.iloc[i]["TonnagePred"] + self.distance * 0.13
-               elif(int(self.prediction.iloc[i]["TypePred"]) == 3):
-                    type = "Gravats"
-                    prix = 0.025 * self.prediction.iloc[i]["TonnagePred"] + self.distance * 0.13
-               elif(int(self.prediction.iloc[i]["TypePred"]) == 4):
-                    type = "Déchets Végétaux"
-                    prix = 0.065 * self.prediction.iloc[i]["TonnagePred"] + self.distance * 0.13
-               elif(int(self.prediction.iloc[i]["TypePred"]) == 5):
-                    type = "Protoxyte d'azote"
-                    prix = 0.347 * self.prediction.iloc[i]["TonnagePred"] + self.distance * 0.13
-               elif(int(self.prediction.iloc[i]["TypePred"]) == 6):
-                    type = "Amiante"
-                    prix = 0.450 * self.prediction.iloc[i]["TonnagePred"] + self.distance * 0.13
-               elif(int(self.prediction.iloc[i]["TypePred"]) == 7):
-                    type = "Pneu ou autre objet"
-                    prix = 0.195 * self.prediction.iloc[i]["TonnagePred"] + self.distance * 0.13
+                   if (int(self.prediction.iloc[i]["TypePred"]) == 1):
+                        type = "Objet Encombrant"
+                        prix = 0.094 * self.prediction.iloc[i]["TonnagePred"] + self.distance * 0.13
+                   elif(int(self.prediction.iloc[i]["TypePred"]) == 2):
+                        type = "DIB, ordures Menagères"
+                        prix = 0.138 * self.prediction.iloc[i]["TonnagePred"] + self.distance * 0.13
+                   elif(int(self.prediction.iloc[i]["TypePred"]) == 3):
+                        type = "Gravats"
+                        prix = 0.025 * self.prediction.iloc[i]["TonnagePred"] + self.distance * 0.13
+                   elif(int(self.prediction.iloc[i]["TypePred"]) == 4):
+                        type = "Déchets Végétaux"
+                        prix = 0.065 * self.prediction.iloc[i]["TonnagePred"] + self.distance * 0.13
+                   elif(int(self.prediction.iloc[i]["TypePred"]) == 5):
+                        type = "Protoxyte d'azote"
+                        prix = 0.347 * self.prediction.iloc[i]["TonnagePred"] + self.distance * 0.13
+                   elif(int(self.prediction.iloc[i]["TypePred"]) == 6):
+                        type = "Amiante"
+                        prix = 0.450 * self.prediction.iloc[i]["TonnagePred"] + self.distance * 0.13
+                   elif(int(self.prediction.iloc[i]["TypePred"]) == 7):
+                        type = "Pneu ou autre objet"
+                        prix = 0.195 * self.prediction.iloc[i]["TonnagePred"] + self.distance * 0.13
 
-               html=""" 
-               <h4 style="color:#0000FF;">Type du déchet : </h4><div style="color:#000000;">"""+str(type)+"""</div>
-               <h4 style="color:#0000FF;">Poids du déchet : </h4><div style="color:#000000;">"""+str(round(self.prediction.iloc[i]["TonnagePred"],2))+"""</div>
-               <h4 style="color:#0000FF;"> Probabilité de déchet à cet endroit: </h4><div style="color:#000000;">"""+str(cmpt*6)+ "%"+"""</div>
-               <h4 style="color:#0000FF;">Nom de la dechetterie la plus proche : </h4><div style="color:#000000;">"""+str(self.name)+"""</div>
-               <h4 style="color:#0000FF;">Distance de la déchetterie : </h4><div style="color:#000000;">"""+str(round(self.distance,2))+"""</div>
-               <h4 style="color:#0000FF;">Estimation du prix de ramassage : </h4><div style="color:#000000;">"""+str(round(prix,2))+"""</div>
-               <h4 style="color:#0000FF;">Longitude : </h4><div style="color:#000000;">"""+str(self.prediction.iloc[i]['LongitudePred'])+"""</div>
-               <h4 style="color:#0000FF;">Latitude : </h4><div style="color:#000000;">"""+str(self.prediction.iloc[i]['LatitudePred'])+"""</div>
-               <a href="/index/"""+str(i)+"""";> <button type="button" class="btn btn-primary">Valider la présence du déchet</button></a>  
+                   html=""" 
+                   <h4 style="color:#0000FF;">Type du déchet : </h4><div style="color:#000000;">"""+str(type)+"""</div>
+                   <h4 style="color:#0000FF;">Poids du déchet : </h4><div style="color:#000000;">"""+str(round(self.prediction.iloc[i]["TonnagePred"],2))+"""</div>
+                   <h4 style="color:#0000FF;"> Probabilité de déchet à cet endroit: </h4><div style="color:#000000;">"""+str(cmpt*6)+ "%"+"""</div>
+                   <h4 style="color:#0000FF;">Nom de la dechetterie la plus proche : </h4><div style="color:#000000;">"""+str(self.name)+"""</div>
+                   <h4 style="color:#0000FF;">Distance de la déchetterie : </h4><div style="color:#000000;">"""+str(round(self.distance,2))+"""</div>
+                   <h4 style="color:#0000FF;">Estimation du prix de ramassage : </h4><div style="color:#000000;">"""+str(round(prix,2))+"""</div>
+                   <h4 style="color:#0000FF;">Longitude : </h4><div style="color:#000000;">"""+str(self.prediction.iloc[i]['LongitudePred'])+"""</div>
+                   <h4 style="color:#0000FF;">Latitude : </h4><div style="color:#000000;">"""+str(self.prediction.iloc[i]['LatitudePred'])+"""</div>
+                   <a href="/index/"""+str(i)+"""";> <button type="button" class="btn btn-primary">Valider la présence du déchet</button></a>  
                 
-               """
-               popup = folium.Popup(html)
-               folium.Circle(
-                  location=[self.prediction.iloc[i]['LatitudePred'], self.prediction.iloc[i]['LongitudePred']],
-                  radius=np.exp(5),
-                  color=couleur,
-                  weight=2,
-                  popup= popup,
-                  fill_color=couleur,
-                  fill_opacity = 1,
-               ).add_to(c)
+                   """
+                   popup = folium.Popup(html)
+                   folium.Circle(
+                      location=[self.prediction.iloc[i]['LatitudePred'], self.prediction.iloc[i]['LongitudePred']],
+                      radius=np.exp(5),
+                      color=couleur,
+                      weight=2,
+                      popup= popup,
+                      fill_color=couleur,
+                      fill_opacity = 1,
+                   ).add_to(self.c)
         
            for i in range(0,len(self.trueValue)):
+                print("tre"+str(len(self.trueValue)))
                 cmpt = 0
                 type = ""
                 tonnage = ""
@@ -235,13 +233,57 @@ class mapping:
                                         , max_width=500),
                     fill_color='black',
                     fill_opacity = 1,
-                ).add_to(c)
-                
+                ).add_to(self.c)
+               
 
-                for i in range(0,len(self.dechetteries)):
-                    icon_hz = dict(prefix='fa', color='red', icon_color='darkred', icon='cny')
-                    folium.Marker([self.dechetteries.iloc[i]['Latitude'], self.dechetteries.iloc[i]['Longitude']], popup = str(self.dechetteries.iloc[i]['Name']),icon=folium.Icon(color='green',icon='trash')).add_to(c)
-                    
-            
-           return c
+           for i in range(0,len(self.dechetteries)):
+             icon_hz = dict(prefix='fa', color='red', icon_color='darkred', icon='cny')
+             folium.Marker([self.dechetteries.iloc[i]['Latitude'], self.dechetteries.iloc[i]['Longitude']], popup = str(self.dechetteries.iloc[i]['Name']),icon=folium.Icon(color='green',icon='trash')).add_to(self.c)
+           return self.c
+
+    def validation_dechet(self, prediction):
+            self.prediction = prediction
+            for i in range(0, len(self.prediction)):
+                if self.prediction.iloc[i]['Verification'] == 1:
+
+                    self.name, self.distance = self.CalculDistance(self.prediction.iloc[i]['LongitudePred'],self.prediction.iloc[i]['LatitudePred'])
+                    if (int(self.prediction.iloc[i]["TypePred"]) == 1):
+                        type = "Objet Encombrant"
+                        prix = 0.094 * self.prediction.iloc[i]["TonnagePred"] + self.distance * 0.13
+                    elif(int(self.prediction.iloc[i]["TypePred"]) == 2):
+                        type = "DIB, ordures Menagères"
+                        prix = 0.138 * self.prediction.iloc[i]["TonnagePred"] + self.distance * 0.13
+                    elif(int(self.prediction.iloc[i]["TypePred"]) == 3):
+                        type = "Gravats"
+                        prix = 0.025 * self.prediction.iloc[i]["TonnagePred"] + self.distance * 0.13
+                    elif(int(self.prediction.iloc[i]["TypePred"]) == 4):
+                        type = "Déchets Végétaux"
+                        prix = 0.065 * self.prediction.iloc[i]["TonnagePred"] + self.distance * 0.13
+                    elif(int(self.prediction.iloc[i]["TypePred"]) == 5):
+                        type = "Protoxyte d'azote"
+                        prix = 0.347 * self.prediction.iloc[i]["TonnagePred"] + self.distance * 0.13
+                    elif(int(self.prediction.iloc[i]["TypePred"]) == 6):
+                        type = "Amiante"
+                        prix = 0.450 * self.prediction.iloc[i]["TonnagePred"] + self.distance * 0.13
+                    elif(int(self.prediction.iloc[i]["TypePred"]) == 7):
+                        type = "Pneu ou autre objet"
+                        prix = 0.195 * self.prediction.iloc[i]["TonnagePred"] + self.distance * 0.13
+
+                    folium.Circle(
+                    location=[self.prediction.iloc[i]['LatitudePred'], self.prediction.iloc[i]['LongitudePred']],
+                    radius=np.exp(5),
+                    color="black",
+                    weight=2,
+                    popup=folium.Popup("""<h4 style="color:#000000;">Type du déchet : </h4><div style="color:#000000;">"""+str(type)+"""</div>
+                                        <h4 style="color:#000000;">Poids du déchet : </h4><div style="color:#000000;">"""+str(self.prediction.iloc[i]["TonnagePred"])+"""</div>
+                                        <h4 style="color:#000000;">Nom de la dechetterie la plus proche : </h4><div style="color:#000000;">"""+str(self.name)+"""</div>
+                                        <h4 style="color:#000000;">Distance de la déchetterie : </h4><div style="color:#000000;">"""+str(round(self.distance,2))+"""</div>
+                                        <h4 style="color:#000000;">Estimation du prix de ramassage : </h4><div style="color:#000000;">"""+str(prix)+"""</div>
+                                        <h4 style="color:#000000;">Longitude : </h4><div style="color:#000000;">"""+str(self.prediction.iloc[i]['LongitudePred'])+"""</div>
+                                        <h4 style="color:#000000;">Latitude : </h4><div style="color:#000000;">"""+str(self.prediction.iloc[i]['LatitudePred'])+"""</div>"""
+                                        , max_width=500),
+                    fill_color='black',
+                    fill_opacity = 1,
+                ).add_to(self.c)
+            return self.c
 
